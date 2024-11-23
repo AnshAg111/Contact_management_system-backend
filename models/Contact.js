@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
-const { type } = require("server/reply");
+// const { type } = require("server/reply");
 
 const ContactSchema = new mongoose.Schema({
   first_name: {
@@ -41,6 +41,10 @@ const validateContact = (data) => {
     // address: Joi.string().min(4).max(100).required(),
     email: Joi.string().email().required(),
     phone: Joi.number().min(7).max(10000000000).required(),
+    company: Joi.string(),
+    first_name: Joi.string(),
+    job_title: Joi.string(),
+    last_name: Joi.string(),
   });
 
   return schema.validate(data);
